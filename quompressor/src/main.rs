@@ -1,3 +1,5 @@
+use image::error::ImageError;
+
 fn exit(msg: &str, code: i32) -> ! {
     eprintln!("{}", msg);
     std::process::exit(code);
@@ -17,8 +19,24 @@ fn main() {
     let (into, from) = (cli_matches.is_present("into"), cli_matches.is_present("from"));
     match (into, from) {
         (true, true) => exit("Only one of -i/--into and -f/--from must be present", 2),
-        (true, false) => {},
-        (false, true) => {},
+        (true, false) => {
+            let path = cli_matches.value_of("INPUT").unwrap();
+            let source = match image::open(path) {
+                Ok(i) => i,
+                Err(e) => {
+                    let (msg, code) = match e {
+                        ImageError::Decoding(_) => ("Invalid image data", 4),
+                        ImageError::Limits(_) => ("Computation limits exceeded", 5),
+                        ImageError::IoError(_) => ("File not found or could not be read", 3),
+                        _ => ("An error occurred", 10)
+                    };
+                    exit(msg, code);
+                }
+            }.into_rgba();
+        },
+        (false, true) => {
+
+        },
         (false, false) => exit("One of -i/--into and -f/--from must be present", 2)
     }
 }
