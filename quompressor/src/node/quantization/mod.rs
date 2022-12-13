@@ -115,3 +115,35 @@ pub fn generate_palette<P: palette::DynamicPalette>(
     rank.sort_by_key(|cc: &(palette::Color, isize)| -cc.1);
     P::from(rank.iter().map(|x| x.0).collect())
 }
+
+// Process an image given a palette so as to convert it to a "rectangle"
+// of pixels each represented by a palette-color-number that most closely
+// matches the original color
+//
+// For the efficiency of the quadtree, the image may be Gaussian-blurred
+// before quantization; the extent to which this is done is controlled by `blur`
+pub fn quantize_to_palette<P: palette::Palette>(
+    img: &image::RgbaImage,
+    palette: &P
+) -> Vec<u32> {
+    let palette_colors = palette.get_slice().map(|x| x.to_owned())
+        .unwrap_or_else(|| (0..1 << palette.width())
+            .map(|n| palette.to_rgba(n as u32).unwrap())
+            .collect::<Vec<_>>());
+    let mut quant_cache = HashMap::new();
+    img.pixels()
+        .map(|pix| {
+            match quant_cache.get(pix) {
+                Some(c) => *c,
+                None => {
+                    let c = palette_colors.iter()
+                        .enumerate()
+                        .map(|(ind, col)| (color_distance(pix, col), ind as u32))
+                        .min().unwrap().1;
+                    quant_cache.insert(pix, c);
+                    c
+                }
+            }
+        })
+        .collect::<Vec<_>>()
+}
