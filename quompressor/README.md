@@ -19,9 +19,12 @@ This tool aims at compressing PNG pictures in a funny way. I'm not sure that thi
 but it gives a rough idea about how image compression and binary representation can work in Rust. This
 project is also educational and can be used as a support for a Rust tech talk (cf. the amazing Gradio amazing UI for the demos (still WIP) !) 
 
+## QIM binary format spec
+
+You can find the spec for the QIM format (intermediate representation of the compressed data on disk) [here](./doc/QIM_spec.md)
+
 ## TODO
 
-* Write .QIM format spec
 * Write a couple of examples (if using CLI) 
 * Write python FFIs (with PyO3)
 * Write Gradio app with python FFIs to have a nice user-friendly app for the demo
