@@ -1,20 +1,21 @@
-// Copyright 2022 gab
-// 
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-// 
-//     http://www.apache.org/licenses/LICENSE-2.0
-// 
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+
 
 # Quompressor
 
-TODO
+```bash
+   ____                                                                      
+  / __ \ __  __ ____   ____ ___   ____   _____ ___   _____ _____ ____   _____
+ / / / // / / // __ \ / __ `__ \ / __ \ / ___// _ \ / ___// ___// __ \ / ___/
+/ /_/ // /_/ // /_/ // / / / / // /_/ // /   /  __/(__  )(__  )/ /_/ // /    
+\___\_\\__,_/ \____//_/ /_/ /_// .___//_/    \___//____//____/ \____//_/     
+                              /_/                                            
+```
+
+This tool aims at compressing PNG pictures in a funny way. I'm not sure that this is extremely performant
+but it gives a rough idea about how image compression and binary representation can work in Rust. This
+project is also educational and can be used as a support for a Rust tech talk (cf. the amazing Gradio amazing UI for the demos (still WIP) !) 
+
+## TODO
 
 * Write .QIM format spec
 * Write a couple of examples (if using CLI) 
