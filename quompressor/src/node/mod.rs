@@ -12,7 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-pub mod quantize;
+
+pub mod error;
+pub mod quantization;
 
 // Node in a quadtree for storing an image
 //
@@ -22,13 +24,13 @@ pub mod quantize;
 // can stop at any level and give a meaningful preview, among other
 // possible reasons.
 #[derive(Clone, Debug, Default)]
-pub struct QuadtreeNode<P: quantize::palette::Palette + Default> {
+pub struct QuadtreeNode<P: quantization::palette::Palette + Default> {
     pub color: u32,
     pub sections: Option<Box<[QuadtreeNode<P>; 4]>>,
     _pal: std::marker::PhantomData<P>
 }
 
-impl<P: quantize::palette::Palette + Default> QuadtreeNode<P> {
+impl<P: quantization::palette::Palette + Default> QuadtreeNode<P> {
 	// Takes a "square" of color numbers to match the given palette
 	// and arranges it into an efficient quadtree.
 	//

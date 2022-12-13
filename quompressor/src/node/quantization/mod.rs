@@ -80,7 +80,7 @@ fn color_div(a: BigColor, b: isize) -> palette::Color {
 // `dedup_thres` indicates the (squared) limit for how "distant" colors can be
 // while still being quantized as one color
 pub fn generate_palette<P: palette::DynamicPalette>(
-    img: &image::RRgbaImage,
+    img: &image::RgbaImage,
     dedup_thres: u32
 ) -> P {
     let mut successes = HashMap::new();
