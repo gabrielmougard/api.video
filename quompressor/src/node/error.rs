@@ -47,3 +47,14 @@ pub enum MountError {
 	// A pixel has a color outside the extent of the palette.
 	ColorOutOfRange,
 }
+
+// Reason why a quadtree couldn't be rendered to an image buffer.
+#[derive(Debug)]
+pub enum DrawError {
+	// The image buffer's dimensions are not equal; the image is not a square.
+	NonSquare,
+	// The image buffer's dimensions are not powers of two.
+	NonPowerOfTwo,
+	// A color specified in the quadtree is outside the range of the palette.
+	ColorOutOfRange,
+}
