@@ -15,13 +15,10 @@
 use bitvec::vec::BitVec;
 
 use super::error::*;
-use super::quantize::palette::{DynamicPalette, Palette};
+use super::quantization::palette::{DynamicPalette, Palette};
 
 // A `BitVec` variant ideal for encoding and decoding quadtrees.
 type QuadtreeEncodeBitVec = BitVec<bitvec::order::Msb0, u8>;
-
-// A type for doing things
-type DecodeQueue = Vec<(Vec<(bool, u32)>, usize)>;
 
 impl<P: Palette + Default> super::QuadtreeNode<P> {
     // Converts the `QuadtreeNode` into a binary data format.
