@@ -23,6 +23,19 @@ project is also educational and can be used as a support for a Rust tech talk (c
 
 You can find the spec for the QIM format (intermediate representation of the compressed data on disk) [here](./doc/QIM_spec.md)
 
+# Example
+
+```bash
+# generate the .QIM intermediate binary representation
+./target/release/quompressor -i examples/kitchen-2048x2048.png examples/kitchen-2048x2048_loss.qim 
+
+# generate the compressed .PNG
+./target/release/quompressor -f examples/kitchen-2048x2048_loss.qim
+
+du -h kitchen-2048x2048.png # 5.1M
+du -h kitchen-2048x2048_loss.png # 372K (~ 13,7x smaller still with a very decent quality)
+```
+
 ## TODO
 
 * Write a couple of examples (if using CLI) 
