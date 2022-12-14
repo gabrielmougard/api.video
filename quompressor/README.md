@@ -38,7 +38,6 @@ du -h kitchen-2048x2048_loss.png # 4.1M (~ 20% smaller with same size and still 
 
 ## TODO
 
-* Write a couple of examples (if using CLI) 
 * Write python FFIs (with PyO3)
 * Write Gradio app with python FFIs to have a nice user-friendly app for the demo
 * At this point, it is ready to be shown and we need to write the actual tech talk.
