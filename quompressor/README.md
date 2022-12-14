@@ -33,7 +33,7 @@ You can find the spec for the QIM format (intermediate representation of the com
 ./target/release/quompressor -f examples/kitchen-2048x2048_loss.qim -w 2048
 
 du -h kitchen-2048x2048.png # 5.1M
-du -h kitchen-2048x2048_loss.png # 4.1M (~ 20% smaller with small size and still with a very decent quality)
+du -h kitchen-2048x2048_loss.png # 4.1M (~ 20% smaller with same size and still with a very decent quality)
 ```
 
 ## TODO
