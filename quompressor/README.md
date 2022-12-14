@@ -30,10 +30,10 @@ You can find the spec for the QIM format (intermediate representation of the com
 ./target/release/quompressor -i examples/kitchen-2048x2048.png examples/kitchen-2048x2048_loss.qim 
 
 # generate the compressed .PNG
-./target/release/quompressor -f examples/kitchen-2048x2048_loss.qim
+./target/release/quompressor -f examples/kitchen-2048x2048_loss.qim -w 2048
 
 du -h kitchen-2048x2048.png # 5.1M
-du -h kitchen-2048x2048_loss.png # 372K (~ 13,7x smaller still with a very decent quality)
+du -h kitchen-2048x2048_loss.png # 4.1M (~ 20% smaller with small size and still with a very decent quality)
 ```
 
 ## TODO
