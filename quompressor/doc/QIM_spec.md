@@ -27,7 +27,7 @@ QIM files have no registered MIME type and have a file extension of `.qim`.
 ## File header (magic bytes and such)
 
 At the start of a QIM file, there is the "magic byte" sequence starting with the
-ASCII characters `QuIM` (for "Quadtree IMage"), followed by a byte to
+ASCII characters `QuadIM` (for "Quadtree IMage"), followed by a byte to
 represent the format version (`0x01` for this version of the document), another
 byte to describe the size of the color space, and four bytes to describe whether
 gradients are to be used and the size of the image.

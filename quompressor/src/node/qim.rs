@@ -94,7 +94,7 @@ impl<P: Palette + Default> super::QuadtreeNode<P> {
 	pub fn to_qim(&self, palette: &P) -> Result<Vec<u8>, EncodeError> {
 		let mut ret = Vec::new();
 		// Header (version 1)
-		ret.extend_from_slice(b"QuIM\x01");
+		ret.extend_from_slice(b"QuadIM\x01");
 		let mut palette_vec = palette.get_slice()
 			.map(|x| x.to_owned())
 			.unwrap_or_else(|| (0..palette.width() << 1)
@@ -127,7 +127,7 @@ impl<'a, P: DynamicPalette + Default + std::fmt::Debug> super::QuadtreeNode<P> {
     // Derives a palette and quadtree from the data of a QIM file.
 	pub fn from_qim(source: &[u8]) -> Result<(super::QuadtreeNode<P>, P), DecodeError> {
 		// Verify header (version 1 is required for compatibility)
-		if &source[..6] != b"QuIM" {
+		if &source[..6] != b"QuadIM" {
 			return Err(DecodeError::MissingHeader);
 		}
 		let pal_size = (source[7] & 0x1f) + 1;
