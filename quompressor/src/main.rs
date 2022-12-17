@@ -1,8 +1,10 @@
 use image::error::ImageError;
 
-use quompressor::QuadtreeNode;
-use quompressor::quantization;
-use quompressor::error::DrawError;
+mod node;
+
+use node::QuadtreeNode;
+use node::quantization;
+use node::error::DrawError;
 
 use std::fs::File;
 use std::io::{Read, Write};
@@ -68,15 +70,12 @@ fn main() {
 				<quantization::palette::DynamicPaletteView>(&source, dedup);
 			eprintln!("{} colors in generated palette", palette.colors.len());
 			let mut tree: QuadtreeNode<_> = Default::default();
-			// TODO: Allow runtime configuration of gradient mode
+
 			match tree.from_image(&source, &palette, sensitivity, blur, true) {
 				Ok(()) => (),
-				// TODO: Add support for non-square/non-power-of-two images
 				Err(_) => exit("Input image has invalid dimensions", 4)
 			}
 			for _ in 0..trim {
-				// TODO: Allow runtime configuration of trim depth
-				// And perhaps improve trim with a sensitivity parameter?
 				tree.trim(6);
 			}
             // `.expect()` is valid here, because the only error that can occur here
@@ -115,7 +114,7 @@ fn main() {
 				Err(_) => exit("Non-numeric value for width", 2)
 			};
             let mut output = image::RgbaImage::new(width, width);
-			// TODO: Allow runtime configuration of gradient mode
+
 			match tree.to_image(&mut output, &palette, None, None, true) {
 				Ok(_) => (),
 				Err(e) => {
