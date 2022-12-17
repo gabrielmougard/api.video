@@ -59,9 +59,3 @@ du -h kitchen-2048x2048_loss.png # 4.1M (~ 20% smaller with same size and still 
   The output file ./examples/kitchen-2048x2048-python.png size is 4069091 bytes
   The compression ratio is : 0.23794142786618633%
   ```
-
-
-
-## TODO
-
-* Write the actual tech talk.
