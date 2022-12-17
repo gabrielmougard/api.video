@@ -52,8 +52,16 @@ du -h kitchen-2048x2048_loss.png # 4.1M (~ 20% smaller with same size and still 
   ```
 
 
+  * You can execute the python example code : `python main.py`. It should give you this :
+
+  ```bash
+  The input file ./examples/kitchen-2048x2048.png size is 5339604 bytes
+  The output file ./examples/kitchen-2048x2048-python.png size is 4069091 bytes
+  The compression ratio is : 0.23794142786618633%
+  ```
+
+
+
 ## TODO
 
-* Write python FFIs (with PyO3) (TODO: test if this is working as expected)
-* Write Gradio app with python FFIs to have a nice user-friendly app for the demo
-* At this point, it is ready to be shown and we need to write the actual tech talk.
+* Write the actual tech talk.
