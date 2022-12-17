@@ -36,8 +36,24 @@ du -h kitchen-2048x2048.png # 5.1M
 du -h kitchen-2048x2048_loss.png # 4.1M (~ 20% smaller with same size and still with a very decent quality)
 ```
 
+## Build instructions
+
+* If you wish to build the CLI binary, just do `cargo build --release`. The output binary is at `target/release/quompressor`
+
+* If you wish to build the python app with the shared Rust lib :
+  * Create a virtual environment : `python3 -m venv .env && source .env/bin/activate`
+  * Install `pip-tools` : `pip install pip-tools`
+  * You can use the compiled `requirements/base.txt` to install the project python deps with `pip install -r requirements/base.txt` or regenerate the list of python dependencies with `pip-compile requirements/base.in` and then install the recompiled dependencies with `pip install -r requirements/base.txt`
+  * Compile the shared lib and generate FFIs for CPython using : `maturin develop`
+  * Now, try to see if the `quompressor` Python module is available
+  
+  ```python
+  from quompressor import compress # If this is OK, the lib has been ported to a CPython module
+  ```
+
+
 ## TODO
 
-* Write python FFIs (with PyO3)
+* Write python FFIs (with PyO3) (TODO: test if this is working as expected)
 * Write Gradio app with python FFIs to have a nice user-friendly app for the demo
 * At this point, it is ready to be shown and we need to write the actual tech talk.
